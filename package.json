@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/goldenmember94/exel_project/issues"
   },
-  "homepage": "https://github.com/goldenmember94/exel_project#readme"
+  "homepage": "https://github.com/goldenmember94/exel_project#readme",
+  "private": "true"
 }
