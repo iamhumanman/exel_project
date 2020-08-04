@@ -1,0 +1,24 @@
+{
+  "name": "senior_exel",
+  "version": "1.0.0",
+  "description": "JavaScript Exel App",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goldenmember94/exel_project.git"
+  },
+  "keywords": [
+    "JS",
+    "Exel",
+    "app"
+  ],
+  "author": "Alexandr Katenyov <katenev.ar@yandex.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goldenmember94/exel_project/issues"
+  },
+  "homepage": "https://github.com/goldenmember94/exel_project#readme"
+}
