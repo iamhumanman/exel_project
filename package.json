@@ -4,7 +4,9 @@
   "description": "JavaScript Exel App",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,9 @@
     "url": "https://github.com/goldenmember94/exel_project/issues"
   },
   "homepage": "https://github.com/goldenmember94/exel_project#readme",
-  "private": "true"
+  "private": "true",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
 }
