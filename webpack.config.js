@@ -4,16 +4,17 @@ const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const isProd = process.env.NODE_ENV === 'production'
+const isDev = !isProd
 
-
-
+const fileName = ext => isDev ? `boundle.${ext}` : `boundle.[hash].${ext}`
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development', //собираем все в режиме разработки
-    entry: './index.js', //входной файл приложения
+    entry: ['@babel/polyfill', './index.js'], //входной файл приложения
     output: {
-        filename: 'boundle.[hash].js',
+        filename: fileName('js'),
         path: path.resolve(__dirname, 'dist')
     }, //куда вебпак собирает проект, filename - название файла, path - путь файла
     resolve: {
@@ -23,9 +24,18 @@ module.exports = {
             '@core': path.resolve(__dirname, 'src/core')
         }
     },
+    devtool: isDev ? 'sourse-map' : false,
+    devServer: {
+        port: 3000,
+        hot: isDev
+    },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'index.html'
+            template: 'index.html',
+            minify : {
+                removeComments: isProd,
+                collapseWhitespace: isProd
+            }
         }),
         new CopyPlugin({
             patterns: [
@@ -37,7 +47,7 @@ module.exports = {
           }),
           new CleanWebpackPlugin(),
           new MiniCssExtractPlugin({
-               filename: 'boundle.[hash].css'
+               filename: fileName('css')
           })
     ],
     module: {
@@ -45,7 +55,13 @@ module.exports = {
           {
             test: /\.s[ac]ss$/i,
             use: [
-                MiniCssExtractPlugin.loader,
+                {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        hmr: isDev,
+                        reloadAll: true
+                    }
+                },
               'css-loader',
               'sass-loader',
             ],
