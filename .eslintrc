@@ -13,7 +13,8 @@
         "object-curly-spacing":"off",
         "quotes":"off",
         "comma-dangle":"off",
-        "spaced-comment":"off"
+        "spaced-comment":"off",
+        "operator-linebreak":"off"
     },
     "extends": ["eslint:recommended", "google"]
 }
