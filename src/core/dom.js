@@ -18,6 +18,7 @@ class Dom {
     return this
   }
 
+  //сокращает написание 'addEventListener'
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback)
   }
