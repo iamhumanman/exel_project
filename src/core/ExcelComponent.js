@@ -6,12 +6,17 @@ export class ExcelComponent extends DomListener {
     this.name = options.name || ''
   }
 
-  //возвращает шаблон компонента
+  //возвращает ШАБЛОН компонента
   toHTML() {
     return ''
   }
 
+  //вызов метода ДОБАВЛЕНИЯ слушателей
   init() {
     this.initDOMListeners()
+  }
+  //вызов метода УДАЛЕНИЯ слушателей
+  destroy() {
+    this.removeDOMListeners()
   }
 }

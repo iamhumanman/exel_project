@@ -18,9 +18,13 @@ class Dom {
     return this
   }
 
-  //сокращает написание 'addEventListener'
+  //метод добаления события, сокращает написание 'addEventListener'
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback)
+  }
+
+  off(eventType, callback) {
+    this.$el.removeEventListener(eventType, callback)
   }
 
   append(node) {

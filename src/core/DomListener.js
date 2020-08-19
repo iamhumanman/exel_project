@@ -9,6 +9,7 @@ export class DomListener {
     this.listeners = listeners
   }
 
+  //ДОБАВЛЕНИЕ слушателей событий
   initDOMListeners() {
     this.listeners.forEach(listener => {
       //в переменную 'method' помещаем трансформированное
@@ -20,16 +21,21 @@ export class DomListener {
       }
       //тоже самое что и 'addEventListener', метод 'on()' его сокращенный
       //вариант
-      this.$root.on(listener, this[method].bind(this))
+      this[method] = this[method].bind(this)
+      this.$root.on(listener, this[method])
     })
   }
 
+  //УДАЛЕНИЕ слушателей событий
   removeDOMListeners() {
-    //необходимо реализовать!
+    this.listeners.forEach(listener => {
+      const method = getMethodName(listener)
+      this.$root.off(listener, this[method])
+    })
   }
 }
 
-//добавляет слово 'on' в начале строки (input => onInput)
+//ДОБАВЛЯЕТ слово 'on' в начале строки (input => onInput)
 function getMethodName(eventName) {
   return 'on' + capitalize(eventName)
 }
