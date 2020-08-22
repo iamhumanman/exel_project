@@ -8,7 +8,13 @@
     "rules": {
         "semi":"off",
         "arrow-parens":"off",
-        "eol-last":"off"
+        "eol-last":"off",
+        "require-jsdoc": "off",
+        "object-curly-spacing":"off",
+        "quotes":"off",
+        "comma-dangle":"off",
+        "spaced-comment":"off",
+        "operator-linebreak":"off"
     },
     "extends": ["eslint:recommended", "google"]
 }
