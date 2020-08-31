@@ -28,9 +28,10 @@ function toCell(row) {
   return function(_, col) {
     return `
     <div 
-    class="cell" 
-    contenteditable 
-    data-col="${col}" 
+    class="cell"
+    contenteditable
+    data-col="${col}"
+    data-type="cell"
     data-id="${row}:${col}"
     ></div>
     `
