@@ -1,5 +1,5 @@
 import { $ } from "../../core/dom"
-import { Emitter } from "../../core/emitter"
+import { Emitter } from "../../core/Emitter"
 
 export class Excel {
   constructor(selector, options) {
@@ -32,5 +32,9 @@ export class Excel {
   render() {
     this.$el.append(this.getRoot())
     this.components.forEach(component => component.init())
+  }
+
+  destroy() {
+    this.components.forEach(component => component.destroy())
   }
 }
