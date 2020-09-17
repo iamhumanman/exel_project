@@ -1,5 +1,8 @@
 //в этом файле хранится логика связанная с таблицей.
 
+import { defaultStyles } from "../../constants"
+import { camelToDashCase } from "../../core/utils"
+
 //объект с числовым значением букв
 const CODES ={
   A: 65,
@@ -34,6 +37,9 @@ function toCell(state, row) {
     const id = `${row}:${col}`
     const width = getWidth(state.colState, col)
     const data = state.dataState[id]
+    const styles = Object.keys(defaultStyles)
+        .map(key => `${camelToDashCase(key)}: ${defaultStyles[key]}`)
+        .join(';')
     return `
     <div 
     class="cell"
@@ -41,7 +47,7 @@ function toCell(state, row) {
     data-col="${col}"
     data-type="cell"
     data-id="${id}" 
-    style="width: ${width}"
+    style="${styles}; width: ${width}"
     >${data || ''}</div>
     `
   }
