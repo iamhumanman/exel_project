@@ -1,3 +1,4 @@
+import { defaultStyles } from "../../constants"
 //в этом файле хранится логика связанная с таблицей.
 
 import { toInlineStyles } from "../../core/utils"
@@ -36,7 +37,10 @@ function toCell(state, row) {
     const id = `${row}:${col}`
     const width = getWidth(state.colState, col)
     const data = state.dataState[id]
-    const styles = toInlineStyles(state.stylesState[id])
+    const styles = toInlineStyles({
+      ...defaultStyles,
+      ...state.stylesState[id]
+    })
     return `
     <div 
     class="cell"
