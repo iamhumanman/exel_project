@@ -1,4 +1,5 @@
 import { defaultStyles } from "../../constants"
+import { parse } from "../../core/parse"
 //в этом файле хранится логика связанная с таблицей.
 
 import { toInlineStyles } from "../../core/utils"
@@ -48,8 +49,9 @@ function toCell(state, row) {
     data-col="${col}"
     data-type="cell"
     data-id="${id}" 
+    data-value="${data || ''}"
     style="${styles}; width: ${width}"
-    >${data || ''}</div>
+    >${parse(data) || ''}</div>
     `
   }
 }
